@@ -10,7 +10,7 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "types": ["reflect-metadata","jest"],
+    "types": ["jest"],
     "importHelpers": true,
     "target": "es2020",
     "lib": [

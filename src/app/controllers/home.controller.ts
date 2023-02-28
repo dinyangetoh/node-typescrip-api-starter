@@ -1,17 +1,17 @@
-import express, { Request, Response, Router } from 'express';
+import { Request, Response } from 'express';
+import BaseController from '../common/BaseController';
 
-class HomeController {
-    public router: Router = express.Router();
-
+export default class HomeController extends BaseController {
     public routePrefix = 'home';
 
     constructor() {
-        this.loadRoutes();
+        super();
     }
 
-    private loadRoutes() {
+    protected loadRoutes(): void {
         /* eslint-disable @typescript-eslint/unbound-method */
         this.router.get('/', this.getWelcome);
+        this.router.get('/hello', this.sayHello);
         /* eslint-enable @typescript-eslint/unbound-method */
     }
 
@@ -20,6 +20,10 @@ class HomeController {
             data: 'This is home controller',
         });
     }
-}
 
-export default new HomeController();
+    public sayHello(req: Request, res: Response): Response {
+        return res.json({
+            data: 'Say hello Guest',
+        });
+    }
+}
