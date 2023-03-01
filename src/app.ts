@@ -1,11 +1,10 @@
-import bodyParser from 'body-parser';
-import express, { Application } from 'express';
+import express, { Application, RequestHandler } from 'express';
 import BaseController from './app/common/BaseController';
 
 export default class App {
     public expressApp: Application = express();
 
-    constructor(readonly controllers: BaseController[]) {}
+    constructor(readonly controllers: BaseController[], readonly plugins: RequestHandler[]) {}
 
     public init() {
         this.loadPlugins();
@@ -13,7 +12,9 @@ export default class App {
     }
 
     private loadPlugins() {
-        this.expressApp.use(bodyParser.json());
+        this.plugins.forEach((plugin) => {
+            this.expressApp.use(plugin);
+        });
     }
 
     private loadRoutes() {

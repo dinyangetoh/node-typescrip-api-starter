@@ -1,12 +1,12 @@
 import express, { Router } from 'express';
 import Controller from '../interfaces/Controller';
 
-export default class BaseController implements Controller {
-    routePrefix: string;
+export default abstract class BaseController implements Controller {
+    routePrefix = '/';
 
-    router: Router = express.Router();
+    public router: Router = express.Router();
 
-    constructor() {
+    protected constructor() {
         this.loadRoutes();
     }
 
