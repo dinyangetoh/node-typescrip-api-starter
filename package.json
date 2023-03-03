@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Starter project for build Restful APIs with NodeJs and Typescript",
   "main": "dist/server.js",
-  "author": "David Inyang-Etoh",
+  "author": "John Doe",
   "license": "MIT",
   "scripts": {
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
